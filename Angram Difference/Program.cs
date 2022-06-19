@@ -7,7 +7,7 @@ namespace Angram_Difference
   {
     static void Main(string[] args)
     {
-      List<string> a = new List<string> { "a", "jk", "abb", "mn", "abc" };
+      List<string> a = new List<string> { "aa", "jk", "abb", "mn", "abc" };
       List<string> b = new List<string> { "bb", "kj", "bbc", "op", "def" };
       var result = GetMinimumDifference(a, b);
       Console.WriteLine(string.Join(",", result));
@@ -36,25 +36,24 @@ namespace Angram_Difference
       // store the count of character
       int[] char_count = new int[26];
 
-      // iterate though the first String
-      // and increase the count.
+     // iterate through both the string and increment decrement accordingly
+     // both the string are equal length
       for (int i = 0; i < s1.Length; i++)
+      {
         char_count[s1[i] - 'a']++;
-
-      // iterate through the second string
-      // decrease the count.
-      for (int i = 0; i < s2.Length; i++)
         char_count[s2[i] - 'a']--;
+      }
+        
 
       for (int i = 0; i < 26; ++i)
       {
-        if (char_count[i] != 0)
+        if (char_count[i] > 0)
         {
-          count += Math.Abs(char_count[i]);
+          count += char_count[i];
         }
       }
 
-      return count / 2;
+      return count;
     }
   }
 }
